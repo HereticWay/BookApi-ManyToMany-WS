@@ -11,4 +11,4 @@ create table book (
     primary key (id)
 );
 
-alter table book add constraint FKklnrv3weler2ftkweewlky958 foreign key (author_id) references author
+alter table book add constraint fk_author_id foreign key (author_id) references author

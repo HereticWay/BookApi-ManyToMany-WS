@@ -16,7 +16,7 @@ public class Book {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "author_id", foreignKey = @ForeignKey(name = "fk_author_id"))
     @JsonBackReference
     private Author author;
 }
