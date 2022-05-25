@@ -1,10 +1,10 @@
 package com.example.bookapimanytomany.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,8 +15,22 @@ public class Book {
 
     private String title;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id", foreignKey = @ForeignKey(name = "fk_author_id"))
+    @ManyToMany
+    @JoinTable(
+            name = "book_author",
+            joinColumns =
+                    @JoinColumn(
+                            name = "book_id",
+                            referencedColumnName = "id",
+                            foreignKey = @ForeignKey(name = "fk_book_id")
+                    ),
+            inverseJoinColumns =
+                    @JoinColumn(
+                            name = "author_id",
+                            referencedColumnName = "id",
+                            foreignKey = @ForeignKey(name = "fk_author_id")
+                    )
+    )
     @JsonBackReference
-    private Author author;
+    private List<Author> authors;
 }

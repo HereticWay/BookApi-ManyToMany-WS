@@ -16,7 +16,7 @@ public class Author {
 
     private String name;
 
-    @OneToMany(mappedBy = "author")
+    @ManyToMany(mappedBy = "authors")
     @JsonManagedReference
     private List<Book> books;
 }
