@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class AuthorService {
-    private AuthorRepository authorRepository;
+    private final AuthorRepository authorRepository;
 
     @Autowired
     public AuthorService(AuthorRepository authorRepository) {
@@ -20,7 +20,7 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
-    public Author getById(Long id) {
+    public Author findById(Long id) {
         return authorRepository.findById(id)
                 .get(); // It's ok to throw an exception now
     }
